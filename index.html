@@ -7,13 +7,12 @@
 
 <style>
 :root {
-    --book-blue: #3b5998;
-    --book-yellow: #fce38a;
+    --book-blue: #3d51a6;
+    --book-yellow: #fdf1b8;
     --dark-blue: #2c3e50;
     --text-color: #333;
-    --card-blue: #3d51a6;
-    --card-yellow: #f9e396;
     --border-grey: #d1d9e0;
+    --footer-bg: #2c3e50;
 }
 
 body {
@@ -25,7 +24,7 @@ body {
 
 * { box-sizing: border-box; }
 
-/* Header & Nav */
+/* Official Header Style */
 .top-header {
     background: #fff;
     padding: 10px 5%;
@@ -35,389 +34,338 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.logo-main {
-    font-weight: 800;
+.logo-box {
     border: 2px solid #000;
-    padding: 5px 10px;
-    font-size: 1.1rem;
+    padding: 5px 15px;
+    font-weight: 800;
+    font-size: 1.2rem;
     color: #000;
     text-decoration: none;
+    display: inline-block;
 }
 
-.sub-nav {
+.rosmerta-logo {
+    height: 40px;
+}
+
+/* Sub Nav Menu */
+.nav-links {
     background: #fff;
-    padding: 12px 5%;
+    padding: 15px 5%;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     flex-wrap: wrap;
+    border-bottom: 1px solid #eee;
 }
 
-.sub-nav a {
+.nav-links a {
     text-decoration: none;
-    color: #555;
+    color: #333;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-/* Home Grid Styles */
+.nav-links a:hover { color: var(--book-blue); }
+
+/* Home Grid Layout */
 #homePage {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 0 15px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-.grid-container {
+.official-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.card {
-    border-radius: 6px;
-    padding: 25px;
+.official-card {
+    border-radius: 8px;
+    padding: 30px;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 200px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
 }
 
-.yellow-card { background: var(--card-yellow); grid-row: span 2; }
-.blue-card { background: var(--card-blue); color: #fff; }
-.light-yellow { background: #fdf1b8; }
+.card-yellow { background: var(--book-yellow); }
+.card-blue { background: #3d51a6; color: #fff; }
 
-.btn-book {
+.official-card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.4;
+    z-index: 1;
+}
+
+.book-btn {
     align-self: flex-end;
     background: transparent;
     border: 1.5px solid currentColor;
-    padding: 6px 15px;
-    border-radius: 4px;
+    padding: 8px 20px;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* Container Styles */
+.book-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Forms Container */
 .container {
     max-width: 550px;
-    margin: 20px auto;
+    margin: 40px auto;
     background: #fff;
-    padding: 25px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     display: none;
 }
 
 .form-header {
-    background: #eef2f7;
+    background: #f8f9fa;
     padding: 15px;
     margin-bottom: 25px;
     border-radius: 8px;
-    border-left: 6px solid var(--card-blue);
+    border-left: 5px solid var(--book-blue);
 }
-
-.form-header h3 { margin: 0; color: var(--dark-blue); font-size: 1.1rem; }
-.form-header p { margin: 5px 0 0; font-size: 0.85rem; color: #666; }
 
 label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-weight: 600;
-    font-size: 0.85rem;
-    color: #444;
+    font-size: 0.9rem;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border-grey);
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 0.95rem;
-    outline: none;
+    font-size: 1rem;
 }
 
-input:focus, select:focus { border-color: var(--card-blue); }
-
 .action-btn {
-    background: var(--card-blue);
+    background: var(--book-blue);
     color: white;
     border: none;
     padding: 16px;
     width: 100%;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
-/* QR Section */
-.qr-container {
+/* QR & Payment Style */
+.qr-box {
     text-align: center;
-    padding: 20px;
-    border: 2px dashed #ccc;
-    background: #fafafa;
-    border-radius: 12px;
-}
-.qr-placeholder img { 
-    width: 180px; 
-    height: 180px; 
-    object-fit: contain;
-    background: #eee;
+    padding: 25px;
+    border: 2px dashed #bbb;
+    background: #fdfdfd;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-/* Payment Icons Styling */
+.qr-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+    background: #f0f0f0; /* Image load hone tak halka grey dikhega */
+}
+
 .payment-icons {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
-.pay-icon {
-    height: 24px;
-    width: auto;
-    filter: grayscale(20%);
-    opacity: 0.9;
-}
-
-/* Contact Info Styles */
-.contact-info {
-    margin-bottom: 20px;
-}
-.contact-item {
-    display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    gap: 15px;
+    margin-top: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-footer {
-    background: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+.pay-icon {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
 }
+
+/* Official Footer */
+.official-footer {
+    background: var(--footer-bg);
+    color: #fff;
+    padding: 30px 5%;
+    margin-top: 60px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.footer-links a { color: #ccc; text-decoration: none; }
 
 @media (max-width: 600px) {
-    .grid-container { grid-template-columns: 1fr; }
-    .yellow-card { grid-row: auto; }
+    .official-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
 <div class="top-header">
-    <a href="#" class="logo-main" onclick="showHome()">BOOK-MY-HSRP</a>
-    <div style="font-weight:bold; font-style:italic;">ROSMERTA</div>
+    <a href="#" class="logo-box" onclick="showHome()">BOOK-MY-HSRP</a>
+    <img src="https://bookmyhsrp.com/images/Rosmerta_Logo.png" alt="Rosmerta" class="rosmerta-logo" onerror="this.style.display='none'">
 </div>
 
-<div class="sub-nav">
+<div class="nav-links">
     <a onclick="showHome()">Home</a>
-    <a onclick="showTrack()">Track Order</a>
+    <a onclick="showTrack()">Track Your Order</a>
+    <a onclick="showHome()">Reschedule Appointment</a>
+    <a onclick="showHome()">Cancel Order</a>
     <a onclick="showContact()">Contact Us</a>
 </div>
 
 <div id="homePage">
-    <div style="display:flex; justify-content:center; gap:20px; padding:20px;">
-        <div style="width:50px; height:30px; background:linear-gradient(#F93,#FFF,#128807);"></div>
-        <div style="width:50px; height:30px; background:linear-gradient(#F93,#FFF,#128807);"></div>
+    <!-- Indian Flag Design Element -->
+    <div style="display:flex; justify-content:center; margin-bottom:30px;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png" style="height:40px; opacity:0.6;" alt="flag">
     </div>
 
-    <div class="grid-container">
-        <div class="card yellow-card">
-            <h2>HSRP Registration with Color Sticker</h2>
-            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
+    <div class="official-grid">
+        <div class="official-card card-yellow">
+            <h2>High Security Registration Plate with Colour Sticker</h2>
+            <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
-        <div class="card blue-card">
-            <h2>Replacement Plate</h2>
-            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
+        <div class="official-card card-blue">
+            <h2>Replacement/Retain/Transfer Plate</h2>
+            <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
-        <div class="card light-yellow">
-            <h2>Electric Vehicles</h2>
-            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
+        <div class="official-card card-yellow">
+            <h2>High Security Registration Plate For Electric Vehicle</h2>
+            <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
-        <div class="card light-yellow">
-            <h2>Only Color Sticker</h2>
-            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
+        <div class="official-card card-blue">
+            <h2>Track Your Order</h2>
+            <button class="book-btn" onclick="showTrack()">Track ➔</button>
         </div>
-        <div class="card blue-card">
-            <h2>Track Status</h2>
-            <button class="btn-book" onclick="showTrack()">Track Now ➔</button>
+        <div class="official-card card-yellow">
+            <h2>Only Colour Sticker</h2>
+            <button class="book-btn" onclick="startBooking()">Book ➔</button>
+        </div>
+        <div class="official-card card-blue">
+            <h2>HSRP For Tractor & Trailer</h2>
+            <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
     </div>
 </div>
 
-<!-- STEP 1: VEHICLE DETAILS -->
+<!-- STEP 1 -->
 <div class="container" id="step1Container">
     <div class="form-header">
         <h3>STEP 1: VEHICLE DETAILS</h3>
-        <p>Please enter correct vehicle information</p>
     </div>
-    
-    <label>Select State / UT</label>
+    <label>Select State</label>
     <select id="state">
-        <option value="">-- Select State --</option>
-        <optgroup label="States">
-            <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
-            <option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option>
-            <option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option>
-            <option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option>
-            <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option>
-            <option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
-        </optgroup>
-        <optgroup label="Union Territories">
-            <option>Andaman & Nicobar</option><option>Chandigarh</option><option>Dadra & Nagar Haveli</option><option>Daman & Diu</option>
-            <option>Delhi (NCT)</option><option>Jammu & Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option>
-        </optgroup>
+        <option value="">-- Choose State --</option>
+        <option>Delhi</option><option>Uttar Pradesh</option><option>Haryana</option><option>Punjab</option>
+        <option>Rajasthan</option><option>Gujarat</option><option>Maharashtra</option>
     </select>
-
     <label>Registration Number</label>
-    <input id="vReg" placeholder="DL 01 AB 1234">
-
-    <label>Chassis Number (Last 5 Digits)</label>
-    <input id="vChas" maxlength="5" placeholder="Enter last 5 characters">
-
-    <label>Engine Number (Last 5 Digits)</label>
-    <input id="vEng" maxlength="5" placeholder="Enter last 5 characters">
-
-    <label>Vehicle Category</label>
-    <select id="vCat">
-        <option value="">-- Select Category --</option>
-        <option>Two Wheeler</option>
-        <option>Three Wheeler</option>
-        <option>Four Wheeler</option>
-        <option>Commercial Vehicle</option>
-    </select>
-
-    <label>Fuel Type</label>
-    <select id="vFuel">
-        <option value="">-- Select Fuel --</option>
-        <option>Petrol</option>
-        <option>Diesel</option>
-        <option>CNG</option>
-        <option>Electric</option>
-        <option>CNG + Petrol</option>
-    </select>
-
-    <button class="action-btn" onclick="goToStep2()">Next: Owner Details ➔</button>
+    <input id="vReg" placeholder="Ex: DL01AB1234">
+    <label>Chassis No. (Last 5 digits)</label>
+    <input id="vChas" maxlength="5">
+    <label>Engine No. (Last 5 digits)</label>
+    <input id="vEng" maxlength="5">
+    <button class="action-btn" onclick="goToStep2()">Next ➔</button>
 </div>
 
-<!-- STEP 2: PERSONAL DETAILS -->
+<!-- STEP 2 -->
 <div class="container" id="step2Container">
     <div class="form-header">
-        <h3>STEP 2: OWNER DETAILS</h3>
-        <p>Please enter owner's address and contact details</p>
+        <h3>STEP 2: CONTACT DETAILS</h3>
     </div>
-
     <label>Owner Name</label>
-    <input id="pName" placeholder="Full Name (as per RC)">
-
-    <label>Email ID</label>
-    <input id="pEmail" type="email" placeholder="example@gmail.com">
-
+    <input id="pName" placeholder="Full Name">
     <label>Mobile Number</label>
-    <input id="pMob" maxlength="10" placeholder="10 digit mobile number">
-
-    <div style="display:flex; gap:10px;">
-        <div style="flex:1;">
-            <label>City</label>
-            <input id="pCity" placeholder="Enter City">
-        </div>
-        <div style="flex:1;">
-            <label>Pincode</label>
-            <input id="pPin" maxlength="6" placeholder="6 digit code">
-        </div>
-    </div>
-
-    <label>Full Billing Address</label>
-    <textarea id="pAddr" rows="3" placeholder="House no, Street, Area..."></textarea>
-
+    <input id="pMob" maxlength="10">
+    <label>Email ID</label>
+    <input id="pEmail" type="email">
+    <label>Address</label>
+    <textarea id="pAddr" rows="2"></textarea>
     <button class="action-btn" onclick="goToStep3()">Next: Payment ➔</button>
-    <button onclick="startBooking()" style="border:none; background:none; color:gray; width:100%; margin-top:10px; cursor:pointer;">← Back</button>
 </div>
 
 <!-- STEP 3: PAYMENT -->
 <div class="container" id="step3Container">
     <div class="form-header">
-        <h3>STEP 3: PAYMENT</h3>
-        <p>Secure QR Payment</p>
+        <h3>STEP 3: SECURE PAYMENT</h3>
     </div>
-
-    <div class="qr-container">
-        <div class="qr-placeholder">
-            <img src="qr/qr.png" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PAY_NOW'; this.title='Image not found in qr/qr.png';">
+    <div class="qr-box">
+        <div id="qrPlaceholder">
+            <!-- Sirf aapka upload kiya hua qr.png hi dikhega -->
+            <img id="mainQrImg" class="qr-image" src="qr/qr.png" alt="Payment QR Code">
         </div>
-        <p style="color:green; font-weight:bold; margin-top:10px;">Scan to Pay</p>
+        <p style="color:#2e7d32; font-weight:bold; margin-top:15px;">Scan & Pay via UPI</p>
         
         <div class="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.png" alt="Paytm" class="pay-icon">
+            <img src="https://logowik.com/content/uploads/images/paytm-payments-bank-new7591.logowik.com.webp" alt="Paytm" class="pay-icon">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo.png" alt="UPI" class="pay-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" alt="GPay" class="pay-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe" class="pay-icon">
+            <img src="https://www.vectorlogo.zone/logos/google_pay/google_pay-official.svg" alt="GPay" class="pay-icon">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-logo-icon.png" alt="PhonePe" class="pay-icon">
         </div>
-        
-        <small style="color:gray; display:block; margin-top:10px;">Pay via Any UPI App (Paytm/GPay/PhonePe)</small>
     </div>
-
-    <label style="margin-top:15px;">Upload Payment Screenshot</label>
+    <label>Upload Payment Proof (Screenshot)</label>
     <input type="file" id="pShot" accept="image/*">
-
-    <button class="action-btn" onclick="finishAll()">Final Submit Order ➔</button>
+    <button class="action-btn" onclick="finishOrder()">Confirm Order ➔</button>
 </div>
 
-<!-- TRACK ORDER -->
+<!-- TRACKING -->
 <div class="container" id="trackContainer">
-    <div class="form-header">
-        <h3>TRACK YOUR ORDER</h3>
-    </div>
-    <label>Order ID</label>
-    <input id="trackInput" placeholder="Enter your BMH ID (e.g., BMH759851)">
-    <button class="action-btn" onclick="checkStatus()">Search Status</button>
+    <div class="form-header"><h3>Track Status</h3></div>
+    <input id="trackInput" placeholder="Order ID (e.g. BMH759851)">
+    <button class="action-btn" onclick="checkStatus()">Check Status</button>
     <div id="trackResult" style="margin-top:20px;"></div>
-    <button onclick="showHome()" style="border:none; background:none; color:gray; width:100%; margin-top:15px; cursor:pointer;">← Back to Home</button>
 </div>
 
-<!-- CONTACT US -->
-<div class="container" id="contactContainer">
-    <div class="form-header">
-        <h3>CONTACT US</h3>
-        <p>Get in touch with our support team</p>
-    </div>
-    
-    <div class="contact-info">
-        <div class="contact-item"><b>Email:</b> support@bookmyhsrp.com</div>
-        <div class="contact-item"><b>Helpline:</b> +91 1800-120-120</div>
-        <div class="contact-item"><b>Timing:</b> Mon-Sat (10:00 AM - 6:00 PM)</div>
-    </div>
-
-    <label>Your Name</label>
-    <input type="text" placeholder="Enter your name">
-    
-    <label>Query / Message</label>
-    <textarea rows="3" placeholder="Describe your issue"></textarea>
-    
-    <button class="action-btn" onclick="alert('Thank you! Our team will contact you soon.')">Send Message</button>
-    <button onclick="showHome()" style="border:none; background:none; color:gray; width:100%; margin-top:15px; cursor:pointer;">← Back to Home</button>
-</div>
-
-<!-- SUCCESS PAGE -->
+<!-- SUCCESS -->
 <div class="container" id="successPage" style="text-align:center;">
-    <div style="font-size:60px; color:green;">✔</div>
-    <h2>Booking Success!</h2>
-    <p>Your Order ID is: <b id="finalId" style="color:var(--card-blue); font-size:1.2rem;"></b></p>
-    <div style="background:#e8f5e9; padding:15px; border-radius:8px; margin:15px 0;">
-        <p style="color:#2e7d32; font-weight:600; margin:0;">Standard Delivery Time: 8 to 12 Working Days</p>
+    <div style="font-size:60px; color:#4CAF50;">✔</div>
+    <h2>Order Placed Successfully!</h2>
+    <p>Your Order ID: <b id="finalId" style="color:var(--book-blue);"></b></p>
+    <div style="background:#fff3cd; padding:15px; border-radius:8px; border:1px solid #ffeeba; margin:20px 0;">
+        <p style="margin:0; font-weight:bold; color:#856404;">Delivery Notice:</p>
+        <p style="margin:5px 0 0; font-size:0.9rem;">Your HSRP plate will be delivered in <b>8 to 12 working days</b>.</p>
     </div>
-    <p style="color:#666; font-size:0.9rem;">Please save this ID to track your order.</p>
-    <button class="action-btn" onclick="showHome()">Back to Home</button>
+    <button class="action-btn" onclick="showHome()">Home</button>
 </div>
 
-<footer>
-    © 2026 Plate Service Portal | All Rights Reserved
+<footer class="official-footer">
+    <div class="footer-links">
+        <a>FAQ</a> | <a>Privacy Policy</a> | <a>Terms & Conditions</a> | <a>Refund Policy</a> | <a>Contact Us</a> | <a>About HSRP</a>
+    </div>
+    <p style="margin:0; font-size:0.75rem; color:#aaa;">© 2026 Rosmerta Safety Systems Limited. All Rights Reserved.</p>
 </footer>
 
 <script>
@@ -439,95 +387,52 @@ function showTrack() {
 }
 
 function showContact() {
-    document.getElementById("homePage").style.display = "none";
-    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
-    document.getElementById("contactContainer").style.display = "block";
+    alert("Official Helpline: +91 1800-120-120\nSupport Email: support@bookmyhsrp.com");
 }
 
 function goToStep2() {
-    const fields = [
-        { id: 'state', name: 'State' },
-        { id: 'vReg', name: 'Registration Number' },
-        { id: 'vChas', name: 'Chassis Number' },
-        { id: 'vEng', name: 'Engine Number' },
-        { id: 'vCat', name: 'Vehicle Category' },
-        { id: 'vFuel', name: 'Fuel Type' }
-    ];
-
-    for(let f of fields) {
-        let el = document.getElementById(f.id);
-        if(!el.value.trim()){
-            alert(`Please fill ${f.name}!`);
-            el.focus();
-            return;
-        }
+    if(!document.getElementById("state").value || !document.getElementById("vReg").value) {
+        return alert("Please fill vehicle details first!");
     }
-
-    if(vChas.value.length < 5) return alert("Chassis Number must be at least 5 digits!");
-    if(vEng.value.length < 5) return alert("Engine Number must be at least 5 digits!");
-
     document.getElementById("step1Container").style.display = "none";
     document.getElementById("step2Container").style.display = "block";
 }
 
 function goToStep3() {
-    const fields = [
-        { id: 'pName', name: 'Owner Name' },
-        { id: 'pEmail', name: 'Email ID' },
-        { id: 'pMob', name: 'Mobile Number' },
-        { id: 'pCity', name: 'City' },
-        { id: 'pPin', name: 'Pincode' },
-        { id: 'pAddr', name: 'Full Address' }
-    ];
-
-    for(let f of fields) {
-        let el = document.getElementById(f.id);
-        if(!el.value.trim()){
-            alert(`Please fill ${f.name}!`);
-            el.focus();
-            return;
-        }
+    if(!document.getElementById("pName").value || !document.getElementById("pMob").value) {
+        return alert("Please fill contact details first!");
     }
-
-    if(!pEmail.value.includes('@')) return alert("Please enter a valid Email ID!");
-    if(pMob.value.length < 10) return alert("Mobile Number must be 10 digits!");
-    if(pPin.value.length < 6) return alert("Pincode must be 6 digits!");
+    
+    // Yahan QR image refresh ho raha hai taaki updated qr.png dikhe
+    const qrImg = document.getElementById("mainQrImg");
+    const ts = new Date().getTime(); // Current timestamp for hard refresh
+    qrImg.src = "qr/qr.png?v=" + ts;
 
     document.getElementById("step2Container").style.display = "none";
     document.getElementById("step3Container").style.display = "block";
 }
 
-function finishAll() {
-    if(!pShot.files.length) return alert("Please upload payment screenshot!");
-
+function finishOrder() {
+    if(!document.getElementById("pShot").files.length) {
+        return alert("Please upload payment screenshot!");
+    }
     const id = "BMH" + Math.floor(100000 + Math.random() * 900000);
-    
-    let orders = JSON.parse(localStorage.getItem('hsrp_orders') || '[]');
-    orders.push(id);
-    localStorage.setItem('hsrp_orders', JSON.stringify(orders));
-    
     document.getElementById("finalId").innerText = id;
     document.getElementById("step3Container").style.display = "none";
     document.getElementById("successPage").style.display = "block";
 }
 
 function checkStatus() {
-    const input = document.getElementById("trackInput").value.trim().toUpperCase();
-    const resDiv = document.getElementById("trackResult");
-    const orders = JSON.parse(localStorage.getItem('hsrp_orders') || '[]');
-
-    if(!input) return alert("Please enter Order ID!");
-
-    // Checks if ID starts with BMH and has any content after it
-    if(input.startsWith("BMH") && input.length > 3) {
-        resDiv.innerHTML = `
-            <div style="padding:15px; border-radius:8px; background:#fff3cd; border:1px solid #ffeeba; text-align:left;">
-                <b style="color:#856404;">Status: PENDING</b><br>
-                Verification in progress. Our team will verify your RC and contact you within 24-48 hours.
-            </div>
-        `;
+    const val = document.getElementById("trackInput").value.trim().toUpperCase();
+    const res = document.getElementById("trackResult");
+    if(val.startsWith("BMH") && val.length > 5) {
+        res.innerHTML = `
+            <div style="padding:15px; border-radius:8px; background:#e3f2fd; border:1px solid #bbdefb; color:#1976d2; text-align:left;">
+                <b>Status: IN PROGRESS</b><br>
+                Verification pending. Estimated delivery in 8-12 days.
+            </div>`;
     } else {
-        resDiv.innerHTML = `<p style="color:red; font-weight:bold;">Order ID not found! Make sure it starts with 'BMH'.</p>`;
+        res.innerHTML = `<p style="color:red; text-align:left;">Invalid Order ID. Must start with BMH.</p>`;
     }
 }
 </script>
