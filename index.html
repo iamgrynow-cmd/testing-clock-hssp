@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Plate Service Portal | Book-My-HSRP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --book-blue: #3b5998;
+    --book-yellow: #fce38a;
+    --dark-blue: #2c3e50;
+    --text-color: #333;
+    --card-blue: #3d51a6;
+    --card-yellow: #f9e396;
+    --border-grey: #d1d9e0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7f9;
+    color: var(--text-color);
+}
+
+* { box-sizing: border-box; }
+
+/* Header & Nav */
+.top-header {
+    background: #fff;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo-main {
+    font-weight: 800;
+    border: 2px solid #000;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    color: #000;
+    text-decoration: none;
+}
+
+.sub-nav {
+    background: #fff;
+    padding: 12px 5%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex-wrap: wrap;
+}
+
+.sub-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Home Grid Styles */
+#homePage {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 15px;
+}
+
+.card {
+    border-radius: 6px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.yellow-card { background: var(--card-yellow); grid-row: span 2; }
+.blue-card { background: var(--card-blue); color: #fff; }
+.light-yellow { background: #fdf1b8; }
+
+.btn-book {
+    align-self: flex-end;
+    background: transparent;
+    border: 1.5px solid currentColor;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Container Styles */
+.container {
+    max-width: 550px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.form-header {
+    background: #eef2f7;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border-left: 6px solid var(--card-blue);
+}
+
+.form-header h3 { margin: 0; color: var(--dark-blue); font-size: 1.1rem; }
+.form-header p { margin: 5px 0 0; font-size: 0.85rem; color: #666; }
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+input:focus, select:focus { border-color: var(--card-blue); }
+
+.action-btn {
+    background: var(--card-blue);
+    color: white;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* QR Section */
+.qr-container {
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    background: #fafafa;
+    border-radius: 12px;
+}
+.qr-placeholder img { 
+    width: 180px; 
+    height: 180px; 
+    object-fit: contain;
+    background: #eee;
+}
+
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .yellow-card { grid-row: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+    <a href="#" class="logo-main" onclick="showHome()">BOOK-MY-HSRP</a>
+    <div style="font-weight:bold; font-style:italic;">ROSMERTA</div>
+</div>
+
+<div class="sub-nav">
+    <a onclick="showHome()">Home</a>
+    <a onclick="showTrack()">Track Order</a>
+    <a>Contact</a>
+</div>
+
+<div id="homePage">
+    <div style="display:flex; justify-content:center; gap:20px; padding:20px;">
+        <div style="width:50px; height:30px; background:linear-gradient(#F93,#FFF,#128807);"></div>
+        <div style="width:50px; height:30px; background:linear-gradient(#F93,#FFF,#128807);"></div>
+    </div>
+
+    <div class="grid-container">
+        <div class="card yellow-card">
+            <h2>HSRP Registration with Color Sticker</h2>
+            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+        </div>
+        <div class="card blue-card">
+            <h2>Replacement Plate</h2>
+            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+        </div>
+        <div class="card light-yellow">
+            <h2>Electric Vehicles</h2>
+            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+        </div>
+        <div class="card light-yellow">
+            <h2>Only Color Sticker</h2>
+            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+        </div>
+        <div class="card blue-card">
+            <h2>Track Status</h2>
+            <button class="btn-book" onclick="showTrack()">Track ➔</button>
+        </div>
+    </div>
+</div>
+
+<!-- STEP 1: VEHICLE DETAILS -->
+<div class="container" id="step1Container">
+    <div class="form-header">
+        <h3>STEP 1: VEHICLE DETAILS</h3>
+        <p>Vahan ki sahi jaankari bharein</p>
+    </div>
+    
+    <label>Select State / UT</label>
+    <select id="state">
+        <option value="">-- Select State --</option>
+        <optgroup label="States">
+            <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+            <option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option>
+            <option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option>
+            <option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+            <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option>
+            <option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
+        </optgroup>
+        <optgroup label="Union Territories">
+            <option>Andaman & Nicobar</option><option>Chandigarh</option><option>Dadra & Nagar Haveli</option><option>Daman & Diu</option>
+            <option>Delhi (NCT)</option><option>Jammu & Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option>
+        </optgroup>
+    </select>
+
+    <label>Registration Number</label>
+    <input id="vReg" placeholder="DL 01 AB 1234">
+
+    <label>Chassis Number (Last 5 Digits)</label>
+    <input id="vChas" maxlength="5" placeholder="Enter last 5 characters">
+
+    <label>Engine Number (Last 5 Digits)</label>
+    <input id="vEng" maxlength="5" placeholder="Enter last 5 characters">
+
+    <label>Vehicle Category</label>
+    <select id="vCat">
+        <option value="">-- Select Category --</option>
+        <option>Two Wheeler</option>
+        <option>Three Wheeler</option>
+        <option>Four Wheeler</option>
+        <option>Commercial Vehicle</option>
+    </select>
+
+    <label>Fuel Type</label>
+    <select id="vFuel">
+        <option value="">-- Select Fuel --</option>
+        <option>Petrol</option>
+        <option>Diesel</option>
+        <option>CNG</option>
+        <option>Electric</option>
+        <option>CNG + Petrol</option>
+    </select>
+
+    <button class="action-btn" onclick="goToStep2()">Next: Owner Details ➔</button>
+</div>
+
+<!-- STEP 2: PERSONAL DETAILS -->
+<div class="container" id="step2Container">
+    <div class="form-header">
+        <h3>STEP 2: OWNER DETAILS</h3>
+        <p>Owner ka sahi pata aur contact bharein</p>
+    </div>
+
+    <label>Owner Name</label>
+    <input id="pName" placeholder="Full Name (as per RC)">
+
+    <label>Email ID</label>
+    <input id="pEmail" type="email" placeholder="example@gmail.com">
+
+    <label>Mobile Number</label>
+    <input id="pMob" maxlength="10" placeholder="10 digit mobile number">
+
+    <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+            <label>City</label>
+            <input id="pCity" placeholder="Enter City">
+        </div>
+        <div style="flex:1;">
+            <label>Pincode</label>
+            <input id="pPin" maxlength="6" placeholder="6 digit code">
+        </div>
+    </div>
+
+    <label>Full Billing Address</label>
+    <textarea id="pAddr" rows="3" placeholder="House no, Street, Area..."></textarea>
+
+    <button class="action-btn" onclick="goToStep3()">Next: Payment ➔</button>
+    <button onclick="startBooking()" style="border:none; background:none; color:gray; width:100%; margin-top:10px; cursor:pointer;">← Back</button>
+</div>
+
+<!-- STEP 3: PAYMENT -->
+<div class="container" id="step3Container">
+    <div class="form-header">
+        <h3>STEP 3: PAYMENT</h3>
+        <p>Secure QR Payment (₹450)</p>
+    </div>
+
+    <div class="qr-container">
+        <div class="qr-placeholder">
+            <!-- Path is set to qr/qr.png for your GitHub structure -->
+            <img src="qr/qr.png" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=UPLOADING_ERROR'; this.title='Image not found in qr/qr.png';">
+        </div>
+        <p style="color:green; font-weight:bold; margin-top:10px;">Amount to Pay: ₹450</p>
+        <small style="color:gray;">Scan this code to pay via PhonePe/GPay/Paytm</small>
+    </div>
+
+    <label style="margin-top:15px;">Upload Payment Screenshot</label>
+    <input type="file" id="pShot" accept="image/*">
+
+    <button class="action-btn" onclick="finishAll()">Final Submit Order ➔</button>
+</div>
+
+<!-- TRACK ORDER -->
+<div class="container" id="trackContainer">
+    <div class="form-header">
+        <h3>TRACK YOUR ORDER</h3>
+    </div>
+    <label>Order ID</label>
+    <input id="trackInput" placeholder="Enter your BMH ID">
+    <button class="action-btn" onclick="checkStatus()">Search Status</button>
+    <div id="trackResult" style="margin-top:20px;"></div>
+    <button onclick="showHome()" style="border:none; background:none; color:gray; width:100%; margin-top:15px; cursor:pointer;">← Back to Home</button>
+</div>
+
+<!-- SUCCESS PAGE -->
+<div class="container" id="successPage" style="text-align:center;">
+    <div style="font-size:60px; color:green;">✔</div>
+    <h2>Booking Success!</h2>
+    <p>Apka Order ID hai: <b id="finalId" style="color:var(--card-blue); font-size:1.2rem;"></b></p>
+    <p style="color:#666; font-size:0.9rem;">Ise track karne ke liye save karlein.</p>
+    <button class="action-btn" onclick="showHome()">Back to Home</button>
+</div>
+
+<footer>
+    © 2026 Plate Service Portal | All Rights Reserved
+</footer>
+
+<script>
+function showHome() {
+    document.getElementById("homePage").style.display = "block";
+    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
+}
+
+function startBooking() {
+    document.getElementById("homePage").style.display = "none";
+    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
+    document.getElementById("step1Container").style.display = "block";
+}
+
+function showTrack() {
+    document.getElementById("homePage").style.display = "none";
+    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
+    document.getElementById("trackContainer").style.display = "block";
+}
+
+function goToStep2() {
+    // Detailed Validation for all fields
+    const fields = [
+        { id: 'state', name: 'State' },
+        { id: 'vReg', name: 'Registration Number' },
+        { id: 'vChas', name: 'Chassis Number' },
+        { id: 'vEng', name: 'Engine Number' },
+        { id: 'vCat', name: 'Vehicle Category' },
+        { id: 'vFuel', name: 'Fuel Type' }
+    ];
+
+    for(let f of fields) {
+        let el = document.getElementById(f.id);
+        if(!el.value.trim()){
+            alert(`Bhai, ${f.name} khali hai!`);
+            el.focus();
+            return;
+        }
+    }
+
+    if(vChas.value.length < 5) return alert("Chassis Number ke kam se kam 5 digit chahiye!");
+    if(vEng.value.length < 5) return alert("Engine Number ke kam se kam 5 digit chahiye!");
+
+    document.getElementById("step1Container").style.display = "none";
+    document.getElementById("step2Container").style.display = "block";
+}
+
+function goToStep3() {
+    const fields = [
+        { id: 'pName', name: 'Owner Name' },
+        { id: 'pEmail', name: 'Email ID' },
+        { id: 'pMob', name: 'Mobile Number' },
+        { id: 'pCity', name: 'City' },
+        { id: 'pPin', name: 'Pincode' },
+        { id: 'pAddr', name: 'Full Address' }
+    ];
+
+    for(let f of fields) {
+        let el = document.getElementById(f.id);
+        if(!el.value.trim()){
+            alert(`Bhai, ${f.name} bharna zaroori hai!`);
+            el.focus();
+            return;
+        }
+    }
+
+    if(!pEmail.value.includes('@')) return alert("Sahi Email ID bhariye!");
+    if(pMob.value.length < 10) return alert("Mobile Number 10 digit ka hona chahiye!");
+    if(pPin.value.length < 6) return alert("Pincode 6 digit ka hona chahiye!");
+
+    document.getElementById("step2Container").style.display = "none";
+    document.getElementById("step3Container").style.display = "block";
+}
+
+function finishAll() {
+    if(!pShot.files.length) return alert("Bhai, Payment ka screenshot upload karo!");
+
+    const id = "BMH" + Math.floor(100000 + Math.random() * 900000);
+    
+    let orders = JSON.parse(localStorage.getItem('hsrp_orders') || '[]');
+    orders.push(id);
+    localStorage.setItem('hsrp_orders', JSON.stringify(orders));
+    
+    document.getElementById("finalId").innerText = id;
+    document.getElementById("step3Container").style.display = "none";
+    document.getElementById("successPage").style.display = "block";
+}
+
+function checkStatus() {
+    const input = document.getElementById("trackInput").value.trim().toUpperCase();
+    const resDiv = document.getElementById("trackResult");
+    const orders = JSON.parse(localStorage.getItem('hsrp_orders') || '[]');
+
+    if(!input) return alert("Pehle Order ID dalo!");
+
+    if(orders.includes(input)) {
+        resDiv.innerHTML = `
+            <div style="padding:15px; border-radius:8px; background:#fff3cd; border:1px solid #ffeeba; text-align:left;">
+                <b style="color:#856404;">Status: PENDING</b><br>
+                Verification in progress. Hamari team 24-48 ghante mein RC verify karke apko contact karegi.
+            </div>
+        `;
+    } else {
+        resDiv.innerHTML = `<p style="color:red; font-weight:bold;">Order ID nahi mili! Check karke firse dalo.</p>`;
+    }
+}
+</script>
+
+</body>
+</html>
