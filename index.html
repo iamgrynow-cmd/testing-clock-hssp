@@ -181,7 +181,7 @@ body {
 
 /* --- QR & Payment --- */
 .qr-wrapper { text-align: center; padding: 20px; }
-.qr-image-main { width: 220px; height: 220px; margin-bottom: 10px; }
+.qr-image-main { width: 220px; height: 220px; margin-bottom: 10px; object-fit: contain; }
 .scan-to-pay-text { color: #2e7d32; font-weight: 800; font-size: 1.2rem; margin: 10px 0; }
 
 .upi-text-row {
@@ -344,7 +344,8 @@ body {
             <p>Pay online to confirm your slot</p>
         </div>
         <div class="qr-wrapper">
-            <img id="mainQrImg" src="qr/qr.png" class="qr-image-main" alt="QR Code">
+            <!-- Path fixed: changed from qr/qr.png to qr.png to match your GitHub repo -->
+            <img id="mainQrImg" src="qr.png" class="qr-image-main" alt="QR Code" onerror="this.src='https://via.placeholder.com/220?text=Upload+qr.png+to+Repo'">
             <div class="scan-to-pay-text">Scan to Pay</div>
             <div class="upi-text-row">
                 <span class="pay-paytm">Paytm</span>
