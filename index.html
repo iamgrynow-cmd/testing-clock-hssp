@@ -25,7 +25,7 @@ body {
 
 * { box-sizing: border-box; }
 
-/* --- UPDATED BOLD HEADER & NAV --- */
+/* --- BOLD HEADER & NAV --- */
 .header {
     background: #ffffff;
     padding: 18px 20px;
@@ -66,7 +66,7 @@ body {
 .nav a {
     text-decoration: none;
     color: #4b5563;
-    font-weight: 800; /* Extra Bold */
+    font-weight: 800; 
     font-size: 0.85rem;
     padding: 8px 18px;
     background: #e2e8f0;
@@ -80,7 +80,7 @@ body {
     color: #ffffff;
 }
 
-/* --- REST OF YOUR CODE (NO CHANGES) --- */
+/* --- MAIN LAYOUT --- */
 .container {
     max-width: 1100px;
     margin: 20px auto;
@@ -223,11 +223,6 @@ body {
 
 .footer { text-align: center; padding: 30px; background: #2c3e50; color: #fff; margin-top: 50px; font-size: 0.8rem; }
 
-@media (max-width: 600px) {
-    .container { margin: 10px auto; }
-    .input-style, .btn-next-step, .btn-book { font-size: 0.9rem; }
-}
-
 .ad-banner {
     width: 100%;
     max-width: 800px;
@@ -343,6 +338,7 @@ body {
             <p>Pay online to confirm your slot</p>
         </div>
         <div class="qr-wrapper">
+            <!-- QR Image with Hard Refresh ID -->
             <img id="mainQrImg" src="qr.png" class="qr-image-main" alt="QR Code" onerror="this.src='https://via.placeholder.com/220?text=Upload+qr.png+to+Repo'">
             <div class="scan-to-pay-text">Scan to Pay</div>
             <div class="upi-text-row">
@@ -434,6 +430,14 @@ function showTab(id) {
         document.getElementById('contactSuccess').style.display = 'none';
     }
     window.scrollTo(0,0);
+
+    // Hard Refresh for QR Image logic
+    if(id === 'step3') {
+        const qrImg = document.getElementById('mainQrImg');
+        const timestamp = new Date().getTime();
+        // Adds a query param to bypass cache
+        qrImg.src = "qr.png?v=" + timestamp;
+    }
 }
 
 function toStep2() {
