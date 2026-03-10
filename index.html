@@ -283,7 +283,6 @@ body {
         <label class="field-label">Select State / UT</label>
         <select class="input-style" id="vState" style="width: calc(100% - 40px);">
             <option value="">-- Select State --</option>
-            <!-- All 36 States and UTs -->
             <option>Andaman and Nicobar Islands</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chandigarh</option><option>Chhattisgarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jammu and Kashmir</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Ladakh</option><option>Lakshadweep</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Puducherry</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
         </select>
 
@@ -385,15 +384,20 @@ body {
             <h2>Contact Us</h2>
             <p>We are here to help you</p>
         </div>
-        <label class="field-label">Full Name</label>
-        <input type="text" class="input-style" id="cName">
-        <label class="field-label">Email ID</label>
-        <input type="email" class="input-style" id="cEmail">
-        <label class="field-label">Message</label>
-        <textarea class="input-style" id="cMsg" rows="4" style="width: calc(100% - 40px);"></textarea>
-        <button class="btn-next-step" onclick="submitContact()">Send Message</button>
+        <div id="contactFormFields">
+            <label class="field-label">Full Name</label>
+            <input type="text" class="input-style" id="cName">
+            <label class="field-label">Email ID</label>
+            <input type="email" class="input-style" id="cEmail">
+            <label class="field-label">Message</label>
+            <textarea class="input-style" id="cMsg" rows="4" style="width: calc(100% - 40px);"></textarea>
+            <button class="btn-next-step" onclick="submitContact()">Send Message</button>
+        </div>
         <div id="contactSuccess" style="display:none; padding: 20px; text-align: center;">
-            <p style="color: #2e7d32; font-weight: 700;">Message Sent! We will reply within 24 hours.</p>
+            <div style="font-size:40px; color:#2e7d32; margin-bottom: 10px;">✓</div>
+            <p style="color: #2e7d32; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">Message Sent Successfully!</p>
+            <p style="color: #555; font-size: 0.9rem;">Our team will reply to you within <b>24 hours</b>.</p>
+            <button class="btn-next-step" onclick="location.reload()" style="background:#555;">Back to Home</button>
         </div>
     </div>
 
@@ -426,7 +430,10 @@ function showTab(id) {
     document.querySelectorAll('.form-container').forEach(el => el.style.display = 'none');
     document.getElementById(id).style.display = 'block';
     if(id === 'trackPage') document.getElementById('statusResult').style.display = 'none';
-    if(id === 'contactPage') document.getElementById('contactSuccess').style.display = 'none';
+    if(id === 'contactPage') {
+        document.getElementById('contactFormFields').style.display = 'block';
+        document.getElementById('contactSuccess').style.display = 'none';
+    }
     window.scrollTo(0,0);
 }
 
@@ -461,10 +468,8 @@ function trackOrder() {
 
 function submitContact() {
     if(!cName.value || !cEmail.value || !cMsg.value) return alert("Please fill all contact fields.");
+    document.getElementById('contactFormFields').style.display = 'none';
     document.getElementById('contactSuccess').style.display = 'block';
-    setTimeout(() => {
-        location.reload();
-    }, 3000);
 }
 </script>
 
