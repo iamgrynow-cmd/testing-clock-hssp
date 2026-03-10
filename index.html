@@ -24,7 +24,7 @@ body {
 
 * { box-sizing: border-box; }
 
-/* Official Header Style */
+/* --- Official Header --- */
 .top-header {
     background: #fff;
     padding: 10px 5%;
@@ -48,7 +48,7 @@ body {
     height: 40px;
 }
 
-/* Sub Nav Menu */
+/* --- Navigation --- */
 .nav-links {
     background: #fff;
     padding: 15px 5%;
@@ -71,7 +71,7 @@ body {
 
 .nav-links a:hover { color: var(--book-blue); }
 
-/* Home Grid Layout */
+/* --- Official Home Page Grid --- */
 #homePage {
     max-width: 1200px;
     margin: 30px auto;
@@ -92,8 +92,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    position: relative;
-    overflow: hidden;
 }
 
 .card-yellow { background: var(--book-yellow); }
@@ -103,7 +101,6 @@ body {
     font-size: 1.2rem;
     margin: 0;
     line-height: 1.4;
-    z-index: 1;
 }
 
 .book-btn {
@@ -114,143 +111,132 @@ body {
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
-.book-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-/* Forms Container */
-.container {
-    max-width: 550px;
+/* --- Purana Form Style Steps --- */
+.form-container {
+    max-width: 600px;
     margin: 40px auto;
     background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 4px;
     display: none;
+    overflow: hidden;
 }
 
-.form-header {
-    background: #f8f9fa;
+.step-header {
+    background: var(--book-blue);
+    color: #fff;
     padding: 15px;
-    margin-bottom: 25px;
-    border-radius: 8px;
-    border-left: 5px solid var(--book-blue);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form-body {
+    padding: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
+    margin-bottom: 8px;
+    font-weight: bold;
     font-size: 0.9rem;
+    color: #555;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 12px;
-    margin-bottom: 18px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1rem;
 }
 
-.action-btn {
-    background: var(--book-blue);
+.btn-next {
+    background: #e67e22;
     color: white;
     border: none;
-    padding: 16px;
+    padding: 15px;
     width: 100%;
-    border-radius: 8px;
-    font-weight: bold;
     font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
-/* QR & Payment Style */
-.qr-box {
+/* --- QR Page Style --- */
+.qr-section {
     text-align: center;
-    padding: 25px;
-    border: 2px dashed #bbb;
-    background: #fdfdfd;
-    border-radius: 15px;
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
-.qr-image {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    display: block;
-    background: #f0f0f0; /* Image load hone tak halka grey dikhega */
+.qr-frame {
+    border: 1px solid #ddd;
+    padding: 15px;
+    display: inline-block;
+    background: #fff;
+    margin-bottom: 15px;
 }
 
-.payment-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.pay-icon {
-    height: 20px;
-    width: auto;
+#mainQrImg {
+    width: 250px;
+    height: 250px;
     object-fit: contain;
 }
 
-/* Official Footer */
+.pay-icons-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.pay-icon {
+    height: 25px;
+}
+
+/* --- Footer --- */
 .official-footer {
     background: var(--footer-bg);
     color: #fff;
     padding: 30px 5%;
     margin-top: 60px;
+    text-align: center;
 }
 
 .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 0.8rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 20px;
 }
 
-.footer-links a { color: #ccc; text-decoration: none; }
-
-@media (max-width: 600px) {
-    .official-grid { grid-template-columns: 1fr; }
-}
+.footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; }
 </style>
 </head>
 <body>
 
+<!-- Header Section -->
 <div class="top-header">
     <a href="#" class="logo-box" onclick="showHome()">BOOK-MY-HSRP</a>
-    <img src="https://bookmyhsrp.com/images/Rosmerta_Logo.png" alt="Rosmerta" class="rosmerta-logo" onerror="this.style.display='none'">
+    <img src="https://bookmyhsrp.com/images/Rosmerta_Logo.png" alt="Rosmerta" class="rosmerta-logo">
 </div>
 
 <div class="nav-links">
     <a onclick="showHome()">Home</a>
-    <a onclick="showTrack()">Track Your Order</a>
-    <a onclick="showHome()">Reschedule Appointment</a>
-    <a onclick="showHome()">Cancel Order</a>
+    <a onclick="showTrack()">Track Order</a>
+    <a onclick="showHome()">Reschedule</a>
     <a onclick="showContact()">Contact Us</a>
 </div>
 
+<!-- Home Page (Official Grid) -->
 <div id="homePage">
-    <!-- Indian Flag Design Element -->
-    <div style="display:flex; justify-content:center; margin-bottom:30px;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png" style="height:40px; opacity:0.6;" alt="flag">
+    <div style="text-align:center; margin-bottom:30px;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png" style="height:35px;" alt="India">
     </div>
 
     <div class="official-grid">
@@ -263,177 +249,173 @@ input, select, textarea {
             <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
         <div class="official-card card-yellow">
-            <h2>High Security Registration Plate For Electric Vehicle</h2>
+            <h2>Only Colour Sticker</h2>
             <button class="book-btn" onclick="startBooking()">Book ➔</button>
         </div>
         <div class="official-card card-blue">
             <h2>Track Your Order</h2>
             <button class="book-btn" onclick="showTrack()">Track ➔</button>
         </div>
-        <div class="official-card card-yellow">
-            <h2>Only Colour Sticker</h2>
-            <button class="book-btn" onclick="startBooking()">Book ➔</button>
-        </div>
-        <div class="official-card card-blue">
-            <h2>HSRP For Tractor & Trailer</h2>
-            <button class="book-btn" onclick="startBooking()">Book ➔</button>
-        </div>
     </div>
 </div>
 
-<!-- STEP 1 -->
-<div class="container" id="step1Container">
-    <div class="form-header">
-        <h3>STEP 1: VEHICLE DETAILS</h3>
-    </div>
-    <label>Select State</label>
-    <select id="state">
-        <option value="">-- Choose State --</option>
-        <option>Delhi</option><option>Uttar Pradesh</option><option>Haryana</option><option>Punjab</option>
-        <option>Rajasthan</option><option>Gujarat</option><option>Maharashtra</option>
-    </select>
-    <label>Registration Number</label>
-    <input id="vReg" placeholder="Ex: DL01AB1234">
-    <label>Chassis No. (Last 5 digits)</label>
-    <input id="vChas" maxlength="5">
-    <label>Engine No. (Last 5 digits)</label>
-    <input id="vEng" maxlength="5">
-    <button class="action-btn" onclick="goToStep2()">Next ➔</button>
-</div>
-
-<!-- STEP 2 -->
-<div class="container" id="step2Container">
-    <div class="form-header">
-        <h3>STEP 2: CONTACT DETAILS</h3>
-    </div>
-    <label>Owner Name</label>
-    <input id="pName" placeholder="Full Name">
-    <label>Mobile Number</label>
-    <input id="pMob" maxlength="10">
-    <label>Email ID</label>
-    <input id="pEmail" type="email">
-    <label>Address</label>
-    <textarea id="pAddr" rows="2"></textarea>
-    <button class="action-btn" onclick="goToStep3()">Next: Payment ➔</button>
-</div>
-
-<!-- STEP 3: PAYMENT -->
-<div class="container" id="step3Container">
-    <div class="form-header">
-        <h3>STEP 3: SECURE PAYMENT</h3>
-    </div>
-    <div class="qr-box">
-        <div id="qrPlaceholder">
-            <!-- Sirf aapka upload kiya hua qr.png hi dikhega -->
-            <img id="mainQrImg" class="qr-image" src="qr/qr.png" alt="Payment QR Code">
+<!-- Step 1: Vehicle Details -->
+<div class="form-container" id="step1">
+    <div class="step-header">Booking Detail - Vehicle Information</div>
+    <div class="form-body">
+        <div class="form-group">
+            <label>State</label>
+            <select id="vState">
+                <option value="">Select State</option>
+                <option>Delhi</option><option>Uttar Pradesh</option><option>Haryana</option>
+            </select>
         </div>
-        <p style="color:#2e7d32; font-weight:bold; margin-top:15px;">Scan & Pay via UPI</p>
+        <div class="form-group">
+            <label>Registration Number</label>
+            <input type="text" id="vReg" placeholder="DLXXXXXXXX">
+        </div>
+        <div class="form-group">
+            <label>Chassis Number (Last 5 Digits)</label>
+            <input type="text" id="vChas" maxlength="5">
+        </div>
+        <div class="form-group">
+            <label>Engine Number (Last 5 Digits)</label>
+            <input type="text" id="vEng" maxlength="5">
+        </div>
+        <button class="btn-next" onclick="toStep2()">Click Here ➔</button>
+    </div>
+</div>
+
+<!-- Step 2: Owner Details -->
+<div class="form-container" id="step2">
+    <div class="step-header">Booking Detail - Owner Information</div>
+    <div class="form-body">
+        <div class="form-group">
+            <label>Owner Name</label>
+            <input type="text" id="oName">
+        </div>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" id="oMob" maxlength="10">
+        </div>
+        <div class="form-group">
+            <label>Email ID</label>
+            <input type="email" id="oEmail">
+        </div>
+        <div class="form-group">
+            <label>Billing Address</label>
+            <textarea id="oAddr" rows="3"></textarea>
+        </div>
+        <button class="btn-next" onclick="toStep3()">Pay Online ➔</button>
+    </div>
+</div>
+
+<!-- Step 3: Payment (QR Page) -->
+<div class="form-container" id="step3">
+    <div class="step-header">Secure Online Payment</div>
+    <div class="form-body qr-section">
+        <p style="font-weight:bold; color:red; margin-bottom:10px;">IMPORTANT: Scan and Pay Immediately</p>
+        <div class="qr-frame">
+            <!-- QR code directly from your folder -->
+            <img id="mainQrImg" src="qr/qr.png" alt="Payment QR">
+        </div>
+        <p style="font-size:0.9rem; color:#666;">Payable Amount: ₹485.00</p>
         
-        <div class="payment-icons">
-            <img src="https://logowik.com/content/uploads/images/paytm-payments-bank-new7591.logowik.com.webp" alt="Paytm" class="pay-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo.png" alt="UPI" class="pay-icon">
-            <img src="https://www.vectorlogo.zone/logos/google_pay/google_pay-official.svg" alt="GPay" class="pay-icon">
-            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-logo-icon.png" alt="PhonePe" class="pay-icon">
+        <div class="pay-icons-row">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.png" class="pay-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo.png" class="pay-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" class="pay-icon">
         </div>
+
+        <div class="form-group" style="margin-top:20px; text-align:left;">
+            <label>Upload Payment Screenshot</label>
+            <input type="file" id="pProof" accept="image/*">
+        </div>
+        <button class="btn-next" onclick="completeOrder()">Submit Payment ➔</button>
     </div>
-    <label>Upload Payment Proof (Screenshot)</label>
-    <input type="file" id="pShot" accept="image/*">
-    <button class="action-btn" onclick="finishOrder()">Confirm Order ➔</button>
 </div>
 
-<!-- TRACKING -->
-<div class="container" id="trackContainer">
-    <div class="form-header"><h3>Track Status</h3></div>
-    <input id="trackInput" placeholder="Order ID (e.g. BMH759851)">
-    <button class="action-btn" onclick="checkStatus()">Check Status</button>
-    <div id="trackResult" style="margin-top:20px;"></div>
+<!-- Tracking Page -->
+<div class="form-container" id="trackPage">
+    <div class="step-header">Track Your Order</div>
+    <div class="form-body">
+        <div class="form-group">
+            <label>Order Number</label>
+            <input type="text" id="trackId" placeholder="Ex: BMH123456">
+        </div>
+        <button class="btn-next" onclick="checkStatus()">Search ➔</button>
+        <div id="trackResult" style="margin-top:20px;"></div>
+    </div>
 </div>
 
-<!-- SUCCESS -->
-<div class="container" id="successPage" style="text-align:center;">
-    <div style="font-size:60px; color:#4CAF50;">✔</div>
-    <h2>Order Placed Successfully!</h2>
-    <p>Your Order ID: <b id="finalId" style="color:var(--book-blue);"></b></p>
-    <div style="background:#fff3cd; padding:15px; border-radius:8px; border:1px solid #ffeeba; margin:20px 0;">
-        <p style="margin:0; font-weight:bold; color:#856404;">Delivery Notice:</p>
-        <p style="margin:5px 0 0; font-size:0.9rem;">Your HSRP plate will be delivered in <b>8 to 12 working days</b>.</p>
+<!-- Success Page -->
+<div class="form-container" id="successPage" style="text-align:center;">
+    <div class="form-body">
+        <div style="font-size:50px; color:green;">✔</div>
+        <h2 style="color:var(--book-blue);">Order Received!</h2>
+        <p>Order ID: <b id="finalId"></b></p>
+        <p>Aapki plate 8-12 din mein aapke address par bhej di jayegi.</p>
+        <button class="btn-next" onclick="showHome()">Back to Home</button>
     </div>
-    <button class="action-btn" onclick="showHome()">Home</button>
 </div>
 
 <footer class="official-footer">
     <div class="footer-links">
-        <a>FAQ</a> | <a>Privacy Policy</a> | <a>Terms & Conditions</a> | <a>Refund Policy</a> | <a>Contact Us</a> | <a>About HSRP</a>
+        <a>Terms</a> | <a>Privacy</a> | <a>Refunds</a> | <a>Contact</a>
     </div>
-    <p style="margin:0; font-size:0.75rem; color:#aaa;">© 2026 Rosmerta Safety Systems Limited. All Rights Reserved.</p>
+    <p>© 2026 Rosmerta Safety Systems. Official Partner.</p>
 </footer>
 
 <script>
 function showHome() {
     document.getElementById("homePage").style.display = "block";
-    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.form-container').forEach(f => f.style.display = 'none');
 }
 
 function startBooking() {
     document.getElementById("homePage").style.display = "none";
-    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
-    document.getElementById("step1Container").style.display = "block";
+    document.getElementById("step1").style.display = "block";
 }
 
 function showTrack() {
     document.getElementById("homePage").style.display = "none";
-    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
-    document.getElementById("trackContainer").style.display = "block";
+    document.getElementById("trackPage").style.display = "block";
 }
 
-function showContact() {
-    alert("Official Helpline: +91 1800-120-120\nSupport Email: support@bookmyhsrp.com");
+function toStep2() {
+    if(!vState.value || !vReg.value) return alert("Fill details!");
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
 }
 
-function goToStep2() {
-    if(!document.getElementById("state").value || !document.getElementById("vReg").value) {
-        return alert("Please fill vehicle details first!");
-    }
-    document.getElementById("step1Container").style.display = "none";
-    document.getElementById("step2Container").style.display = "block";
-}
-
-function goToStep3() {
-    if(!document.getElementById("pName").value || !document.getElementById("pMob").value) {
-        return alert("Please fill contact details first!");
-    }
+function toStep3() {
+    if(!oName.value || !oMob.value) return alert("Fill details!");
     
-    // Yahan QR image refresh ho raha hai taaki updated qr.png dikhe
+    // QR Image Refresh Logic (Sabse important)
     const qrImg = document.getElementById("mainQrImg");
-    const ts = new Date().getTime(); // Current timestamp for hard refresh
-    qrImg.src = "qr/qr.png?v=" + ts;
+    const timestamp = new Date().getTime();
+    // Path ko query string ke saath reload karte hain taaki browser cache na kare
+    qrImg.src = "qr/qr.png?v=" + timestamp;
 
-    document.getElementById("step2Container").style.display = "none";
-    document.getElementById("step3Container").style.display = "block";
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("step3").style.display = "block";
 }
 
-function finishOrder() {
-    if(!document.getElementById("pShot").files.length) {
-        return alert("Please upload payment screenshot!");
-    }
+function completeOrder() {
+    if(!pProof.files.length) return alert("Please upload screenshot!");
     const id = "BMH" + Math.floor(100000 + Math.random() * 900000);
     document.getElementById("finalId").innerText = id;
-    document.getElementById("step3Container").style.display = "none";
+    document.getElementById("step3").style.display = "none";
     document.getElementById("successPage").style.display = "block";
 }
 
 function checkStatus() {
-    const val = document.getElementById("trackInput").value.trim().toUpperCase();
     const res = document.getElementById("trackResult");
-    if(val.startsWith("BMH") && val.length > 5) {
-        res.innerHTML = `
-            <div style="padding:15px; border-radius:8px; background:#e3f2fd; border:1px solid #bbdefb; color:#1976d2; text-align:left;">
-                <b>Status: IN PROGRESS</b><br>
-                Verification pending. Estimated delivery in 8-12 days.
-            </div>`;
-    } else {
-        res.innerHTML = `<p style="color:red; text-align:left;">Invalid Order ID. Must start with BMH.</p>`;
-    }
+    res.innerHTML = `<div style="padding:10px; border:1px solid #ddd; background:#f9f9f9;"><b>Status:</b> Order Verified. Delivery in 10 days.</div>`;
+}
+
+function showContact() {
+    alert("Official Helpline: 1800-120-120\nEmail: support@bookmyhsrp.com");
 }
 </script>
 
