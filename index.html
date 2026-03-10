@@ -168,6 +168,32 @@ input:focus, select:focus { border-color: var(--card-blue); }
     background: #eee;
 }
 
+/* Payment Icons Styling */
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.pay-icon {
+    height: 24px;
+    width: auto;
+    filter: grayscale(20%);
+    opacity: 0.9;
+}
+
+/* Contact Info Styles */
+.contact-info {
+    margin-bottom: 20px;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
 footer {
     background: #2c3e50;
     color: #fff;
@@ -192,7 +218,7 @@ footer {
 <div class="sub-nav">
     <a onclick="showHome()">Home</a>
     <a onclick="showTrack()">Track Order</a>
-    <a>Contact</a>
+    <a onclick="showContact()">Contact Us</a>
 </div>
 
 <div id="homePage">
@@ -204,23 +230,23 @@ footer {
     <div class="grid-container">
         <div class="card yellow-card">
             <h2>HSRP Registration with Color Sticker</h2>
-            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
         </div>
         <div class="card blue-card">
             <h2>Replacement Plate</h2>
-            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
         </div>
         <div class="card light-yellow">
             <h2>Electric Vehicles</h2>
-            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
         </div>
         <div class="card light-yellow">
             <h2>Only Color Sticker</h2>
-            <button class="btn-book" onclick="startBooking()">Book ➔</button>
+            <button class="btn-book" onclick="startBooking()">Book Now ➔</button>
         </div>
         <div class="card blue-card">
             <h2>Track Status</h2>
-            <button class="btn-book" onclick="showTrack()">Track ➔</button>
+            <button class="btn-book" onclick="showTrack()">Track Now ➔</button>
         </div>
     </div>
 </div>
@@ -229,7 +255,7 @@ footer {
 <div class="container" id="step1Container">
     <div class="form-header">
         <h3>STEP 1: VEHICLE DETAILS</h3>
-        <p>Vahan ki sahi jaankari bharein</p>
+        <p>Please enter correct vehicle information</p>
     </div>
     
     <label>Select State / UT</label>
@@ -284,7 +310,7 @@ footer {
 <div class="container" id="step2Container">
     <div class="form-header">
         <h3>STEP 2: OWNER DETAILS</h3>
-        <p>Owner ka sahi pata aur contact bharein</p>
+        <p>Please enter owner's address and contact details</p>
     </div>
 
     <label>Owner Name</label>
@@ -318,16 +344,23 @@ footer {
 <div class="container" id="step3Container">
     <div class="form-header">
         <h3>STEP 3: PAYMENT</h3>
-        <p>Secure QR Payment (₹450)</p>
+        <p>Secure QR Payment</p>
     </div>
 
     <div class="qr-container">
         <div class="qr-placeholder">
-            <!-- Path is set to qr/qr.png for your GitHub structure -->
-            <img src="qr/qr.png" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=UPLOADING_ERROR'; this.title='Image not found in qr/qr.png';">
+            <img src="qr/qr.png" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PAY_NOW'; this.title='Image not found in qr/qr.png';">
         </div>
-        <p style="color:green; font-weight:bold; margin-top:10px;">Amount to Pay: ₹450</p>
-        <small style="color:gray;">Scan this code to pay via PhonePe/GPay/Paytm</small>
+        <p style="color:green; font-weight:bold; margin-top:10px;">Scan to Pay</p>
+        
+        <div class="payment-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.png" alt="Paytm" class="pay-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo.png" alt="UPI" class="pay-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" alt="GPay" class="pay-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe" class="pay-icon">
+        </div>
+        
+        <small style="color:gray; display:block; margin-top:10px;">Pay via Any UPI App (Paytm/GPay/PhonePe)</small>
     </div>
 
     <label style="margin-top:15px;">Upload Payment Screenshot</label>
@@ -342,9 +375,32 @@ footer {
         <h3>TRACK YOUR ORDER</h3>
     </div>
     <label>Order ID</label>
-    <input id="trackInput" placeholder="Enter your BMH ID">
+    <input id="trackInput" placeholder="Enter your BMH ID (e.g., BMH759851)">
     <button class="action-btn" onclick="checkStatus()">Search Status</button>
     <div id="trackResult" style="margin-top:20px;"></div>
+    <button onclick="showHome()" style="border:none; background:none; color:gray; width:100%; margin-top:15px; cursor:pointer;">← Back to Home</button>
+</div>
+
+<!-- CONTACT US -->
+<div class="container" id="contactContainer">
+    <div class="form-header">
+        <h3>CONTACT US</h3>
+        <p>Get in touch with our support team</p>
+    </div>
+    
+    <div class="contact-info">
+        <div class="contact-item"><b>Email:</b> support@bookmyhsrp.com</div>
+        <div class="contact-item"><b>Helpline:</b> +91 1800-120-120</div>
+        <div class="contact-item"><b>Timing:</b> Mon-Sat (10:00 AM - 6:00 PM)</div>
+    </div>
+
+    <label>Your Name</label>
+    <input type="text" placeholder="Enter your name">
+    
+    <label>Query / Message</label>
+    <textarea rows="3" placeholder="Describe your issue"></textarea>
+    
+    <button class="action-btn" onclick="alert('Thank you! Our team will contact you soon.')">Send Message</button>
     <button onclick="showHome()" style="border:none; background:none; color:gray; width:100%; margin-top:15px; cursor:pointer;">← Back to Home</button>
 </div>
 
@@ -352,8 +408,11 @@ footer {
 <div class="container" id="successPage" style="text-align:center;">
     <div style="font-size:60px; color:green;">✔</div>
     <h2>Booking Success!</h2>
-    <p>Apka Order ID hai: <b id="finalId" style="color:var(--card-blue); font-size:1.2rem;"></b></p>
-    <p style="color:#666; font-size:0.9rem;">Ise track karne ke liye save karlein.</p>
+    <p>Your Order ID is: <b id="finalId" style="color:var(--card-blue); font-size:1.2rem;"></b></p>
+    <div style="background:#e8f5e9; padding:15px; border-radius:8px; margin:15px 0;">
+        <p style="color:#2e7d32; font-weight:600; margin:0;">Standard Delivery Time: 8 to 12 Working Days</p>
+    </div>
+    <p style="color:#666; font-size:0.9rem;">Please save this ID to track your order.</p>
     <button class="action-btn" onclick="showHome()">Back to Home</button>
 </div>
 
@@ -379,8 +438,13 @@ function showTrack() {
     document.getElementById("trackContainer").style.display = "block";
 }
 
+function showContact() {
+    document.getElementById("homePage").style.display = "none";
+    document.querySelectorAll('.container').forEach(c => c.style.display = 'none');
+    document.getElementById("contactContainer").style.display = "block";
+}
+
 function goToStep2() {
-    // Detailed Validation for all fields
     const fields = [
         { id: 'state', name: 'State' },
         { id: 'vReg', name: 'Registration Number' },
@@ -393,14 +457,14 @@ function goToStep2() {
     for(let f of fields) {
         let el = document.getElementById(f.id);
         if(!el.value.trim()){
-            alert(`Bhai, ${f.name} khali hai!`);
+            alert(`Please fill ${f.name}!`);
             el.focus();
             return;
         }
     }
 
-    if(vChas.value.length < 5) return alert("Chassis Number ke kam se kam 5 digit chahiye!");
-    if(vEng.value.length < 5) return alert("Engine Number ke kam se kam 5 digit chahiye!");
+    if(vChas.value.length < 5) return alert("Chassis Number must be at least 5 digits!");
+    if(vEng.value.length < 5) return alert("Engine Number must be at least 5 digits!");
 
     document.getElementById("step1Container").style.display = "none";
     document.getElementById("step2Container").style.display = "block";
@@ -419,22 +483,22 @@ function goToStep3() {
     for(let f of fields) {
         let el = document.getElementById(f.id);
         if(!el.value.trim()){
-            alert(`Bhai, ${f.name} bharna zaroori hai!`);
+            alert(`Please fill ${f.name}!`);
             el.focus();
             return;
         }
     }
 
-    if(!pEmail.value.includes('@')) return alert("Sahi Email ID bhariye!");
-    if(pMob.value.length < 10) return alert("Mobile Number 10 digit ka hona chahiye!");
-    if(pPin.value.length < 6) return alert("Pincode 6 digit ka hona chahiye!");
+    if(!pEmail.value.includes('@')) return alert("Please enter a valid Email ID!");
+    if(pMob.value.length < 10) return alert("Mobile Number must be 10 digits!");
+    if(pPin.value.length < 6) return alert("Pincode must be 6 digits!");
 
     document.getElementById("step2Container").style.display = "none";
     document.getElementById("step3Container").style.display = "block";
 }
 
 function finishAll() {
-    if(!pShot.files.length) return alert("Bhai, Payment ka screenshot upload karo!");
+    if(!pShot.files.length) return alert("Please upload payment screenshot!");
 
     const id = "BMH" + Math.floor(100000 + Math.random() * 900000);
     
@@ -452,17 +516,18 @@ function checkStatus() {
     const resDiv = document.getElementById("trackResult");
     const orders = JSON.parse(localStorage.getItem('hsrp_orders') || '[]');
 
-    if(!input) return alert("Pehle Order ID dalo!");
+    if(!input) return alert("Please enter Order ID!");
 
-    if(orders.includes(input)) {
+    // Checks if ID starts with BMH and has any content after it
+    if(input.startsWith("BMH") && input.length > 3) {
         resDiv.innerHTML = `
             <div style="padding:15px; border-radius:8px; background:#fff3cd; border:1px solid #ffeeba; text-align:left;">
                 <b style="color:#856404;">Status: PENDING</b><br>
-                Verification in progress. Hamari team 24-48 ghante mein RC verify karke apko contact karegi.
+                Verification in progress. Our team will verify your RC and contact you within 24-48 hours.
             </div>
         `;
     } else {
-        resDiv.innerHTML = `<p style="color:red; font-weight:bold;">Order ID nahi mili! Check karke firse dalo.</p>`;
+        resDiv.innerHTML = `<p style="color:red; font-weight:bold;">Order ID not found! Make sure it starts with 'BMH'.</p>`;
     }
 }
 </script>
